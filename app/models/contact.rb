@@ -22,4 +22,10 @@ class Contact < ActiveRecord::Base
     source: :user
   )
 
+  has_many(
+    :comments_on,
+    class_name: "Comment",
+    as: :subject
+  )
+
 end

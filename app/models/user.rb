@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
     source: :contact
   )
 
+  def all_contacts
+    [contact].concat(shared_contacts)
+  end
+
 end

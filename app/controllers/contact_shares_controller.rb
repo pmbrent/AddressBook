@@ -2,7 +2,7 @@ class ContactSharesController < ApplicationController
 
   def create
     @contact_share = ContactShare.new(contact_shares_params)
-    
+
     if @contact_share.save
       render json: @contact_share
     else
@@ -14,7 +14,7 @@ class ContactSharesController < ApplicationController
 
   def destroy
     @contact_share = ContactShare.find(params[:id])
-    @contact_share.destroy
+    @contact_share.destroy!
 
     render json: @contact_share
   end

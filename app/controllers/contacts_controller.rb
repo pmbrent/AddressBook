@@ -1,8 +1,7 @@
 class ContactsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    @contacts = [@user.contact].concat(@user.shared_contacts)
+    @contacts = User.find(params[:user_id]).all_contacts
 
     render json: @contacts
   end
@@ -26,7 +25,7 @@ class ContactsController < ApplicationController
 
   def update
     @contact = Contact.find(params[:id])
-    
+
     if @contact.update(contact_params)
       redirect_to contact_url(@contact)
     else
